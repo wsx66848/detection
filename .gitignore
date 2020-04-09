@@ -118,3 +118,10 @@ work_dirs/
 
 # Pytorch
 *.pth
+
+# wget-log
+wget-log
+
+# tags
+scope.sh
+tags
