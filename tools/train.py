@@ -1,8 +1,12 @@
 from __future__ import division
 import argparse
 import os
+import os.path as osp
+import shutil
+import time
 
 import torch
+import mmcv
 from mmcv import Config
 
 from mmdet import __version__
@@ -61,6 +65,11 @@ def main():
     if args.resume_from is not None:
         cfg.resume_from = args.resume_from
     cfg.gpus = args.gpus
+
+    # create config file in workdir
+    work_dir = osp.abspath(cfg.work_dir)
+    mmcv.mkdir_or_exist(work_dir)
+    shutil.copy(osp.abspath(args.config), osp.join(work_dir, osp.basename(args.config) + time.strftime('_%Y%m%d_%H%M%S',time.localtime(time.time()))))
 
     if args.autoscale_lr:
         # apply the linear scaling rule (https://arxiv.org/abs/1706.02677)
