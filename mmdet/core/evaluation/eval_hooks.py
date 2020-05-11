@@ -108,7 +108,8 @@ class DistEvalmAPHook(DistEvalHook):
             scale_ranges=None,
             iou_thr=0.5,
             dataset=ds_name,
-            print_summary=True)
+            print_summary=True,
+            work_dir=osp.join(runner.work_dir, "eval_mAP"))
         runner.log_buffer.output['mAP'] = mean_ap
         runner.log_buffer.ready = True
 
