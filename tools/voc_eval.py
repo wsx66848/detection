@@ -5,6 +5,7 @@ import numpy as np
 
 from mmdet import datasets
 from mmdet.core import eval_map
+from app import *
 
 
 def voc_eval(result_file, dataset, iou_thr=0.5):
